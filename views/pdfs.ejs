@@ -1,0 +1,41 @@
+<% include ./partial/header %>
+<br><br><br><br><br><br><br><br>
+
+<div class="container">
+<h1>NSTI RAMANTHAPUR HYDERABAD</h1>
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <td><%=leave.name %></td>
+    </tr>
+<tr>
+    <th>Subject</th>
+    <td><%= leave.subject %></td>
+</tr>
+<tr>
+    <th>From</th>
+    <td><%= leave.from %></td>
+</tr>
+<tr>
+    <th>To</th>
+    <td><%= leave.to %></td>
+</tr>
+<tr>
+    <th>Days</th>
+    <td><%= leave.days %></td>
+</tr>
+<tr>
+    <th>Status</th>
+    <td><%= leave.status %></td>
+</tr>
+
+<tr>
+    <th>percentage</th>
+   <td> <%=leave.percentage %></td>
+</tr>
+</table>
+
+<td><button onclick="window.print()">PDF</button></td> 
+</div>
+<% include ./partial/footer %> 
