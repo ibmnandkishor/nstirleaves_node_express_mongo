@@ -4,6 +4,8 @@ var leaveSchema = new mongoose.Schema(
     name: { type: String, required: "name cant be blank" },
     subject: { type: String, required: "subject cant be blank" },
     percentage: { type: String, required: "percentage cant be blank" },
+    roomno: { type: String, required: "roomno cant be blank" },
+
 
     from: Date,
     to: Date,

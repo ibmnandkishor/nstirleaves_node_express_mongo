@@ -89,6 +89,9 @@ app.get("/contacts", (req, res) => {
   res.render("contacts");
 });
 
+app.get("/about", (req, res) => {
+  res.render("about");
+});
 
 app.get("/pdfs", (req, res) => {
   res.render("pdfs");
@@ -119,7 +122,6 @@ app.post("/student/register",upload.single('image'), (req, res) => {
     var password2 = req.body.password2;
     var hostel = req.body.hostel;
     var department = req.body.department;
-    var room = req.body.room;
     var image = req.file.filename;
     //validation
     req.checkBody("name", "name is required").notEmpty();
@@ -144,7 +146,6 @@ app.post("/student/register",upload.single('image'), (req, res) => {
         password: password,
         department: department,
         hostel: hostel,
-        room:room,
         type: type,
         image: image
       });
@@ -1043,6 +1044,10 @@ app.post("/principal/:id/leave/:stud_id/info", (req, res) => {
     }
   });
 });
+
+
+
+
 
 
 //logout for student

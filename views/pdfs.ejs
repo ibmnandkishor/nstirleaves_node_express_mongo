@@ -1,10 +1,16 @@
 <% include ./partial/header %>
 <br><br><br><br><br><br><br><br>
-
-<div class="container">
+<head>
+    <style>
+        button:hover{
+            background-color: green;
+        }
+    </style>
+</head>
+<div class="container" style="margin-left: 28%; background-color: pink; width: 45%;">
 <h1>NSTI RAMANTHAPUR HYDERABAD</h1>
 
-<table border="1">
+<table border="1" style="margin-left:10%">
     <tr>
         <th>Name</th>
         <td><%=leave.name %></td>
@@ -34,8 +40,16 @@
     <th>percentage</th>
    <td> <%=leave.percentage %></td>
 </tr>
-</table>
 
-<td><button onclick="window.print()">PDF</button></td> 
+<tr>
+    <th>Room No</th>
+   <td> <%=leave.roomno %></td>
+</tr>
+<tr>
+    <th>Final Status</th>
+   <td> <%=leave.principalstatus %></td>
+</tr>
+</table>
+<button onclick="window.print()" style="margin-left: 40%;">PDF</button> 
 </div>
 <% include ./partial/footer %> 
