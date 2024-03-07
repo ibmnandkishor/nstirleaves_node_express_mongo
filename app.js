@@ -112,6 +112,9 @@ app.get('/leave/:id/pdfs',async(req,res)=>{
 app.get("/register", (req, res) => {
   res.render("register");
 });
+app.get("/sregister", (req, res) => {
+  res.render("sregister");
+});
 //registration logic
 app.post("/student/register",upload.single('image'), (req, res) => {
   var type = req.body.type;
