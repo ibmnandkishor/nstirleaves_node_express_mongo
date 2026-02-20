@@ -1,12 +1,12 @@
 var mongoose = require("mongoose");
-var bcrypt = require("bcryptjs");
+// bcrypt ki ab zaroorat nahi hai
 var passportLocalMongoose = require("passport-local-mongoose");
 
 var principalSchema = new mongoose.Schema({
   name: String,
   type: String,
   username: String,
-  password: String,
+  password: String, // Ye ab plain text store karega
   hostel: String,
   image: String
 });
@@ -14,13 +14,10 @@ var principalSchema = new mongoose.Schema({
 principalSchema.plugin(passportLocalMongoose);
 var Principal = (module.exports = mongoose.model("Principal", principalSchema));
 
+// Naya principal create karne ke liye (Bina hashing ke)
 module.exports.createPrincipal = function(newPrincipal, callback) {
-  bcrypt.genSalt(10, function(err, salt) {
-    bcrypt.hash(newPrincipal.password, salt, function(err, hash) {
-        newPrincipal.password = hash;
-        newPrincipal.save(callback);
-    });
-  });
+    // Hashing logic hata diya gaya hai, direct save karein
+    newPrincipal.save(callback);
 };
 
 module.exports.getUserByUsername = function(username, callback) {
@@ -32,9 +29,12 @@ module.exports.getUserById = function(id, callback) {
   Principal.findById(id, callback);
 };
 
-module.exports.comparePassword = function(candidatePassword, hash, callback) {
-  bcrypt.compare(candidatePassword, hash, function(err, passwordFound) {
-    if (err) throw err;
-    callback(null, passwordFound);
-  });
+// Password compare karne ke liye (Direct match)
+module.exports.comparePassword = function(candidatePassword, storedPassword, callback) {
+  // Hash comparison ki jagah direct string match
+  if (candidatePassword === storedPassword) {
+      callback(null, true);
+  } else {
+      callback(null, false);
+  }
 };
